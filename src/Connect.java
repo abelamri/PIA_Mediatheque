@@ -1,5 +1,3 @@
-package Application.Java;
-
 import java.sql.*;
 import java.text.ParseException;
 
