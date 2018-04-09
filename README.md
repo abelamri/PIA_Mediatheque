@@ -12,6 +12,7 @@ Importer la base de données :
 	4) Coller le contenu dans le champ de texte
 
 --NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
+
 Pour éxecuter le code dans Eclipse :
 	1) Extraire le répertoire PIA_Mediatheque de l'archive fournie ou téléchargée depuis GitHub (https://github.com/abelamri/PIA_Mediatheque.git)
 	2) File > Import
@@ -22,6 +23,7 @@ Pour éxecuter le code dans Eclipse :
 	7) Appuyer sur F11 pour l'éxecuter, ou le bouton "Run" (flèche dans un rond vert, au dessus du code)
 	
 --NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
+
 Pour lancer directement l'éxecutable :
 	1) Clic droit sur le fichier "Mediatheque.jar"
 	2) Ouvrir avec > Java
