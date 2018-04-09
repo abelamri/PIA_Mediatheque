@@ -5,19 +5,21 @@ Importer la base de données :
 
 	1) Lancer uWamp ou Wamp et démarrer phpMyAdmin
 	
-	2) Chercher le bouton "Importer"
+	2) Mettre lenom d'utilisateur et le mot de passe à "root"
+
+	3) Chercher le bouton "Importer"
 	
-	3) Chercher le bouton "choisir un fichier"
+	4) Chercher le bouton "choisir un fichier"
 	
-	4) Choisir le fichier "mediatheque.sql" dans le dossier "src" du répertoire
+	5) Choisir le fichier "mediatheque.sql" dans le dossier "src" du répertoire
 	
 	OU
 	
-	2) Chercher le bouton SQL
+	3) Chercher le bouton SQL
 	
-	3) Copier le contenu du fichier "mediatheque.sql" dans le dossier "src" du répertoire
+	4) Copier le contenu du fichier "mediatheque.sql" dans le dossier "src" du répertoire
 	
-	4) Coller le contenu dans le champ de texte
+	5) Coller le contenu dans le champ de texte
 	
 
 --NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
