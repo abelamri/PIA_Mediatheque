@@ -1,9 +1,10 @@
 # PIA_Mediatheque
-##Projet de gestionnaire de médiathèque en Java.
+
+## Projet de gestionnaire de médiathèque en Java.
 
 Par Ahmed Belamri, Théodore Gueguen, Sébastien Lamblin, Anthony Pinatel
 
-##Importer la base de données :
+## Importer la base de données :
 
 	1) Lancer uWamp ou Wamp et démarrer phpMyAdmin
 	
@@ -24,9 +25,9 @@ Par Ahmed Belamri, Théodore Gueguen, Sébastien Lamblin, Anthony Pinatel
 	5) Coller le contenu dans le champ de texte
 	
 
-###NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
+### NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
 
-##Pour éxecuter le code dans Eclipse :
+## Pour éxecuter le code dans Eclipse :
 
 	1) Extraire le répertoire PIA_Mediatheque de l'archive fournie ou téléchargée depuis GitHub (https://github.com/abelamri/PIA_Mediatheque.git)
 	
@@ -43,9 +44,9 @@ Par Ahmed Belamri, Théodore Gueguen, Sébastien Lamblin, Anthony Pinatel
 	7) Appuyer sur F11 pour l'éxecuter, ou le bouton "Run" (flèche dans un rond vert, au dessus du code)
 	
 	
-###NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
+### NECESSITE D'AVOIR IMPORTÉ LA BASE DE DONNÉES
 
-##Pour lancer directement l'éxecutable :
+## Pour lancer directement l'éxecutable :
 
 	1) Clic droit sur le fichier "Mediatheque.jar"
 	
