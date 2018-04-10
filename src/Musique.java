@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Musique extends Exemplaire {
+public class Musique {
 	static ArrayList<Musique> listeMusiques = new ArrayList<>();
 
 	/**

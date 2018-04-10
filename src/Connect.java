@@ -2,15 +2,15 @@ import java.sql.*;
 import java.text.ParseException;
 
 public class Connect {
-	
+
 	static Connection conn;
 	static Statement state;
 	static ResultSet result;
 	static ResultSetMetaData resultMeta;
-	
-	public Connect(){
+
+	public Connect() {
 	}
-	
+
 	public static void init() throws NumberFormatException, SQLException, ParseException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 
@@ -20,7 +20,6 @@ public class Connect {
 
 		conn = DriverManager.getConnection(url, user, passwd);
 
-		// Création d'un objet Statement
 		state = conn.createStatement();
 		Musique.init();
 		Adherent.init();
@@ -28,7 +27,7 @@ public class Connect {
 		Produit.init();
 		Livre.init();
 	}
-	
+
 	public static void update() throws NumberFormatException, SQLException, ParseException {
 		Musique.init();
 		Adherent.init();

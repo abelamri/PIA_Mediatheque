@@ -2,17 +2,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.*;
 
-/**
- * 
- */
-public class Film extends Exemplaire {
+public class Film {
 	static ArrayList<Film> listeFilms = new ArrayList<>();
 	public Integer idFilm;
 	public Integer idProduction;
 
-	/**
-	 * Default constructor
-	 */
 	public Film() {
 	}
 	
@@ -21,7 +15,6 @@ public class Film extends Exemplaire {
 		this.idFilm = Integer.valueOf(idFilm);
 		this.idProduction = Integer.valueOf(idProduction);
 	}
-
 	
 	static void init() throws SQLException, NumberFormatException, ParseException {
 		String query = "SELECT idFilm, idProd FROM film";
@@ -33,10 +26,6 @@ public class Film extends Exemplaire {
 		}
 	}
 	
-	/**
-	 * @return
-	 * @throws SQLException 
-	 */
 	public List<Integer> getRealisateurs() throws SQLException {
 		ArrayList<Integer> realisateurs = new ArrayList<>();
 		String query = "SELECT idRealisateur FROM realiser WHERE idFilm = '" + idFilm + "';";
@@ -47,11 +36,7 @@ public class Film extends Exemplaire {
 		}		
 		return realisateurs;
 	}
-	
-	/**
-	 * @return
-	 * @throws SQLException 
-	 */
+
 	public List<Integer> getScenaristes() throws SQLException {
 		ArrayList<Integer> scenaristes = new ArrayList<>();
 		String query = "SELECT idScenariste FROM ecrirescenario WHERE idFilm = '" + idFilm + "';";

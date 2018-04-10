@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Livre extends Exemplaire {
+public class Livre {
 	static ArrayList<Livre> listeLivres = new ArrayList<>();
 	public Integer idLivre;
 

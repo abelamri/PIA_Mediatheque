@@ -13,10 +13,7 @@ public class Adherent {
 	public boolean actif;
 	public Integer nbRetard;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-	/**
-	 * Default constructor
-	 */
+	
 	public Adherent() {
 	}
 
@@ -46,30 +43,29 @@ public class Adherent {
 		}
 	}
 
-	/**
-	 * @param idProduit
-	 * @throws SQLException
-	 */
 	public int emprunter(Integer idProduit) throws SQLException {
 		Produit p = Produit.getProduit(idProduit);
 		Integer dispo = p.getExemplaireDispo();
+		String query;
 		if (dispo == -1)
 			return -1;
+		query = "SELECT * FROM reserver WHERE idAdherent = " + idAdherent + " AND idProduit = " + idProduit + ";";
+		Connect.result = Connect.state.executeQuery(query);
+		if(Connect.result.next()) {
+			query = "DELETE FROM reserver WHERE idAdherent = " + idAdherent + " AND idProduit = " + idProduit + ";";
+			Connect.state.executeUpdate(query);			
+		}
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		Calendar dateLimite = Calendar.getInstance();
 		dateLimite.add(Calendar.MONTH, 1);
-		String query = "INSERT INTO emprunter VALUES ('" + dateFormat.format(date) + "', '"
+		query = "INSERT INTO emprunter VALUES ('" + dateFormat.format(date) + "', '"
 				+ dateFormat.format(dateLimite.getTime()) + "', NULL, '" + idAdherent + "', '" + dispo.toString()
 				+ "')";
 		Connect.state.executeUpdate(query);
 		return 0;
 	}
 
-	/**
-	 * @param ...
-	 * @throws SQLException
-	 */
 	public static List<Integer> rechercher(String recherche) throws SQLException {
 		ArrayList<Integer> res = new ArrayList<>();
 		String query = "SELECT idProduit FROM produit WHERE Titre LIKE '%" + recherche + "%';";
@@ -82,10 +78,6 @@ public class Adherent {
 		return res;
 	}
 
-	/**
-	 * @param ...
-	 * @throws SQLException
-	 */
 	public static List<Integer> rechercherGenre(String recherche) throws SQLException {
 		ArrayList<Integer> res = new ArrayList<>();
 		String query = "SELECT p.idProduit FROM produit p JOIN estdegenre e ON p.idProduit = e.idProduit "
@@ -99,10 +91,6 @@ public class Adherent {
 		return res;
 	}
 
-	/**
-	 * @param ...
-	 * @throws SQLException
-	 */
 	public static List<Integer> rechercherAuteur(String recherche) throws SQLException {
 		ArrayList<Integer> res = new ArrayList<>();
 		String query = "SELECT p.idProduit FROM produit p LEFT JOIN ecrirescenario es ON p.idProduit = es.idProduit "
@@ -121,17 +109,16 @@ public class Adherent {
 		return res;
 	}
 
-	/**
-	 * @param idProduit
-	 * @throws SQLException
-	 */
 	public int reserver(Integer idProduit) throws SQLException {
 		Produit p = Produit.getProduit(idProduit);
 		Integer dispo = p.getExemplaireDispo();
 		if (dispo != -1)
 			return -1;
 		Date date = new Date();
-		String query = "INSERT INTO reserver (idAdherent, idProduit, dateReservation) VALUES ('" + idAdherent + "', '"
+		String query = "SELECT * FROM reserver WHERE idProduit = " + idProduit + ";";
+		Connect.result = Connect.state.executeQuery(query);
+		if(Connect.result.next()) return 1;
+		query = "INSERT INTO reserver (idAdherent, idProduit, dateReservation) VALUES ('" + idAdherent + "', '"
 				+ idProduit + "', '" + dateFormat.format(date) + "');";
 		Connect.state.executeUpdate(query);
 		return 0;

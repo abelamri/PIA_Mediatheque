@@ -4,9 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * 
- */
 public class Emprunt {
 
 	public Date dateEmprunt;
@@ -16,9 +13,6 @@ public class Emprunt {
 	public Integer idExemplaire;
 	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-	/**
-	 * Default constructor
-	 */
 	public Emprunt() {
 	}
 

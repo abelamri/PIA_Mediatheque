@@ -145,8 +145,7 @@ public class GUI {
 					GUI window = new GUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(new JFrame(),
-							"La base de données n'a pas été iniialisée.");
+					JOptionPane.showMessageDialog(new JFrame(), "La base de données n'a pas été iniialisée.");
 					e.printStackTrace();
 				}
 			}
@@ -228,10 +227,14 @@ public class GUI {
 			}
 		});
 		tfMotDePasse_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasse_accueil, 0, SpringLayout.NORTH, lblMotDePasse_accueil);
-		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasse_accueil, 5, SpringLayout.EAST, lblMotDePasse_accueil);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasse_accueil, 0, SpringLayout.SOUTH, lblMotDePasse_accueil);
-		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasse_accueil, 340, SpringLayout.EAST, lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasse_accueil, 0, SpringLayout.NORTH,
+				lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasse_accueil, 5, SpringLayout.EAST,
+				lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasse_accueil, 0, SpringLayout.SOUTH,
+				lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasse_accueil, 340, SpringLayout.EAST,
+				lblMotDePasse_accueil);
 		tfMotDePasse_accueil.setColumns(10);
 		frame.getContentPane().add(tfMotDePasse_accueil);
 
@@ -266,7 +269,8 @@ public class GUI {
 				lblNomDutilisateur_accueil);
 		btnConnect_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		springLayout.putConstraint(SpringLayout.NORTH, btnConnect_accueil, 6, SpringLayout.SOUTH, tfMotDePasse_accueil);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnConnect_accueil, 37, SpringLayout.SOUTH, tfMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnConnect_accueil, 37, SpringLayout.SOUTH,
+				tfMotDePasse_accueil);
 		springLayout.putConstraint(SpringLayout.EAST, btnConnect_accueil, 0, SpringLayout.EAST, tfMail_accueil);
 		frame.getContentPane().add(btnConnect_accueil);
 
@@ -307,8 +311,8 @@ public class GUI {
 		lblTitre_inscription = new JLabel("CREATION DE COMPTE");
 		springLayout.putConstraint(SpringLayout.NORTH, lblTitre_inscription, (int) (frame.getHeight() * 0.22),
 				SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblTitre_inscription, 0, SpringLayout.HORIZONTAL_CENTER,
-				frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblTitre_inscription, 0,
+				SpringLayout.HORIZONTAL_CENTER, frame.getContentPane());
 		lblTitre_inscription.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		frame.getContentPane().add(lblTitre_inscription);
 
@@ -321,32 +325,39 @@ public class GUI {
 		frame.getContentPane().add(lblMail_inscription);
 
 		lblPrenom_inscription = new JLabel("Prénom : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblPrenom_inscription, 6, SpringLayout.SOUTH, lblMail_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, lblPrenom_inscription, 6, SpringLayout.SOUTH,
+				lblMail_inscription);
 		springLayout.putConstraint(SpringLayout.EAST, lblPrenom_inscription, 0, SpringLayout.EAST, lblMail_inscription);
 		lblPrenom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		frame.getContentPane().add(lblPrenom_inscription);
 
 		lblNom_inscription = new JLabel("Nom : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNom_inscription, 6, SpringLayout.SOUTH, lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, lblNom_inscription, 6, SpringLayout.SOUTH,
+				lblPrenom_inscription);
 		springLayout.putConstraint(SpringLayout.EAST, lblNom_inscription, 0, SpringLayout.EAST, lblPrenom_inscription);
 		lblNom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		frame.getContentPane().add(lblNom_inscription);
 
 		lblAdresse_inscription = new JLabel("Adresse : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblAdresse_inscription, 6, SpringLayout.SOUTH, lblNom_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, lblAdresse_inscription, 6, SpringLayout.SOUTH,
+				lblNom_inscription);
 		springLayout.putConstraint(SpringLayout.EAST, lblAdresse_inscription, 0, SpringLayout.EAST, lblNom_inscription);
 		lblAdresse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		frame.getContentPane().add(lblAdresse_inscription);
 
 		lblDate_inscription = new JLabel("Date de naissance : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblDate_inscription, 6, SpringLayout.SOUTH, lblAdresse_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, lblDate_inscription, 0, SpringLayout.EAST, lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, lblDate_inscription, 6, SpringLayout.SOUTH,
+				lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblDate_inscription, 0, SpringLayout.EAST,
+				lblAdresse_inscription);
 		lblDate_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		frame.getContentPane().add(lblDate_inscription);
 
 		lblMotDePasse_inscription = new JLabel("Mot de passe : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasse_inscription, 6, SpringLayout.SOUTH, lblDate_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasse_inscription, 0, SpringLayout.EAST, lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasse_inscription, 6, SpringLayout.SOUTH,
+				lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasse_inscription, 0, SpringLayout.EAST,
+				lblDate_inscription);
 		lblMotDePasse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		frame.getContentPane().add(lblMotDePasse_inscription);
 
@@ -369,10 +380,14 @@ public class GUI {
 
 		tfPrenom_inscription = new JTextField();
 		tfPrenom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfPrenom_inscription, 0, SpringLayout.NORTH, lblPrenom_inscription);
-		springLayout.putConstraint(SpringLayout.WEST, tfPrenom_inscription, 5, SpringLayout.EAST, lblPrenom_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfPrenom_inscription, 0, SpringLayout.SOUTH, lblPrenom_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, tfPrenom_inscription, 340, SpringLayout.EAST, lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, tfPrenom_inscription, 0, SpringLayout.NORTH,
+				lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfPrenom_inscription, 5, SpringLayout.EAST,
+				lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfPrenom_inscription, 0, SpringLayout.SOUTH,
+				lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfPrenom_inscription, 340, SpringLayout.EAST,
+				lblPrenom_inscription);
 		tfPrenom_inscription.setColumns(10);
 		frame.getContentPane().add(tfPrenom_inscription);
 
@@ -387,49 +402,69 @@ public class GUI {
 
 		tfAdresse_inscription = new JTextField();
 		tfAdresse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfAdresse_inscription, 0, SpringLayout.NORTH, lblAdresse_inscription);
-		springLayout.putConstraint(SpringLayout.WEST, tfAdresse_inscription, 5, SpringLayout.EAST, lblAdresse_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfAdresse_inscription, 0, SpringLayout.SOUTH, lblAdresse_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, tfAdresse_inscription, 340, SpringLayout.EAST, lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, tfAdresse_inscription, 0, SpringLayout.NORTH,
+				lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfAdresse_inscription, 5, SpringLayout.EAST,
+				lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfAdresse_inscription, 0, SpringLayout.SOUTH,
+				lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfAdresse_inscription, 340, SpringLayout.EAST,
+				lblAdresse_inscription);
 		tfAdresse_inscription.setColumns(10);
 		frame.getContentPane().add(tfAdresse_inscription);
 
 		tfDateJour_inscription = new JComboBox<Integer>();
 		tfDateJour_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfDateJour_inscription, 0, SpringLayout.NORTH, lblDate_inscription);
-		springLayout.putConstraint(SpringLayout.WEST, tfDateJour_inscription, 6, SpringLayout.EAST, lblDate_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfDateJour_inscription, 0, SpringLayout.SOUTH, lblDate_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, tfDateJour_inscription, 85, SpringLayout.EAST, lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, tfDateJour_inscription, 0, SpringLayout.NORTH,
+				lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfDateJour_inscription, 6, SpringLayout.EAST,
+				lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfDateJour_inscription, 0, SpringLayout.SOUTH,
+				lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfDateJour_inscription, 85, SpringLayout.EAST,
+				lblDate_inscription);
 		frame.getContentPane().add(tfDateJour_inscription);
 		for (int i = 1; i <= 31; i++)
 			tfDateJour_inscription.addItem(i);
 
 		tfDateMois_inscription = new JComboBox<Integer>();
 		tfDateMois_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfDateMois_inscription, 0, SpringLayout.NORTH, tfDateJour_inscription);
-		springLayout.putConstraint(SpringLayout.WEST, tfDateMois_inscription, 6, SpringLayout.EAST, tfDateJour_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfDateMois_inscription, 0, SpringLayout.SOUTH, tfDateJour_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, tfDateMois_inscription, 85, SpringLayout.EAST, tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, tfDateMois_inscription, 0, SpringLayout.NORTH,
+				tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfDateMois_inscription, 6, SpringLayout.EAST,
+				tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfDateMois_inscription, 0, SpringLayout.SOUTH,
+				tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfDateMois_inscription, 85, SpringLayout.EAST,
+				tfDateJour_inscription);
 		frame.getContentPane().add(tfDateMois_inscription);
 		for (int i = 1; i <= 12; i++)
 			tfDateMois_inscription.addItem(i);
 
 		tfDateAnnee_inscription = new JComboBox<Integer>();
 		tfDateAnnee_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfDateAnnee_inscription, 0, SpringLayout.NORTH, tfDateMois_inscription);
-		springLayout.putConstraint(SpringLayout.WEST, tfDateAnnee_inscription, 6, SpringLayout.EAST, tfDateMois_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfDateAnnee_inscription, 0, SpringLayout.SOUTH, tfDateMois_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, tfDateAnnee_inscription, 170, SpringLayout.EAST, tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, tfDateAnnee_inscription, 0, SpringLayout.NORTH,
+				tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfDateAnnee_inscription, 6, SpringLayout.EAST,
+				tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfDateAnnee_inscription, 0, SpringLayout.SOUTH,
+				tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfDateAnnee_inscription, 170, SpringLayout.EAST,
+				tfDateMois_inscription);
 		frame.getContentPane().add(tfDateAnnee_inscription);
 		for (int i = 1920; i <= 2017; i++)
 			tfDateAnnee_inscription.addItem(i);
 
 		tfMotDePasse_inscription = new JPasswordField();
 		tfMotDePasse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasse_inscription, 0, SpringLayout.NORTH, lblMotDePasse_inscription);
-		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasse_inscription, 5, SpringLayout.EAST, lblMotDePasse_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasse_inscription, 0, SpringLayout.SOUTH, lblMotDePasse_inscription);
-		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasse_inscription, 340, SpringLayout.EAST, lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasse_inscription, 0, SpringLayout.NORTH,
+				lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasse_inscription, 5, SpringLayout.EAST,
+				lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasse_inscription, 0, SpringLayout.SOUTH,
+				lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasse_inscription, 340, SpringLayout.EAST,
+				lblMotDePasse_inscription);
 		tfMotDePasse_inscription.setColumns(10);
 		frame.getContentPane().add(tfMotDePasse_inscription);
 
@@ -472,10 +507,13 @@ public class GUI {
 				}
 			}
 		});
-		springLayout.putConstraint(SpringLayout.WEST, btnCreer_inscription, 340, SpringLayout.WEST, lblMail_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, btnCreer_inscription, 340, SpringLayout.WEST,
+				lblMail_inscription);
 		btnCreer_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, btnCreer_inscription, 6, SpringLayout.SOUTH, tfMotDePasseBis_inscription);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnCreer_inscription, 37, SpringLayout.SOUTH, tfMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.NORTH, btnCreer_inscription, 6, SpringLayout.SOUTH,
+				tfMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnCreer_inscription, 37, SpringLayout.SOUTH,
+				tfMotDePasseBis_inscription);
 		springLayout.putConstraint(SpringLayout.EAST, btnCreer_inscription, 0, SpringLayout.EAST, tfMail_inscription);
 		frame.getContentPane().add(btnCreer_inscription);
 
@@ -495,8 +533,8 @@ public class GUI {
 		});
 		lblRetour_inscription.setForeground(Color.BLUE);
 		lblRetour_inscription.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblRetour_inscription, 0, SpringLayout.HORIZONTAL_CENTER,
-				frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblRetour_inscription, 0,
+				SpringLayout.HORIZONTAL_CENTER, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, lblRetour_inscription, -10, SpringLayout.SOUTH,
 				frame.getContentPane());
 		frame.getContentPane().add(lblRetour_inscription);
@@ -634,8 +672,13 @@ public class GUI {
 				}
 				try {
 					int r = utilisateurCourant.reserver(produitCourant.idProduit);
-					if(r == -1)JOptionPane.showMessageDialog(frame, "Le produit est déjà disponible, vous pouvez l'emprunter.");
-					else JOptionPane.showMessageDialog(frame, "Réservation réussie.");
+					if (r == -1)
+						JOptionPane.showMessageDialog(frame,
+								"Le produit est déjà disponible, vous pouvez l'emprunter.");
+					else if (r == 1)
+						JOptionPane.showMessageDialog(frame, "Le produit est déjà réservé.");
+					else
+						JOptionPane.showMessageDialog(frame, "Réservation réussie.");
 					produitCourant = null;
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la réservation.");
@@ -1251,13 +1294,29 @@ public class GUI {
 					tfMotDePasse_inscription.setText("");
 					tfMotDePasseBis_inscription.setText("");
 				} else {
+					if (tfDateMois_inscription.getSelectedItem().toString().equals("04")
+							|| tfDateMois_inscription.getSelectedItem().toString().equals("06")
+							|| tfDateMois_inscription.getSelectedItem().toString().equals("09")
+							|| tfDateMois_inscription.getSelectedItem().toString().equals("11")) {
+						if(tfDateJour_inscription.getSelectedItem().toString().equals("31")) {
+							JOptionPane.showMessageDialog(frame, "Saisissez une date valide.");
+							return;
+						}
+					}
+					if (tfDateMois_inscription.getSelectedItem().toString().equals("02")) {
+						if(tfDateJour_inscription.getSelectedItem().toString().equals("31")
+								|| tfDateJour_inscription.getSelectedItem().toString().equals("30")) {
+							JOptionPane.showMessageDialog(frame, "Saisissez une date valide.");
+							return;
+						}
+					}
 					query = "INSERT INTO adherent (eMail, Nom, Prenom, Adresse, DateNaissance, MotDePasse, Actif, nbRetard) VALUES ('"
 							+ tfMail_inscription.getText() + "', '" + tfNom_inscription.getText() + "', '"
 							+ tfPrenom_inscription.getText() + "', '" + tfAdresse_inscription.getText() + "', '"
 							+ tfDateAnnee_inscription.getSelectedItem().toString() + "-"
 							+ tfDateMois_inscription.getSelectedItem().toString() + "-"
-							+ tfDateJour_inscription.getSelectedItem().toString() + "', '" + tfMotDePasse_inscription.getText()
-							+ "', '1', '0');";
+							+ tfDateJour_inscription.getSelectedItem().toString() + "', '"
+							+ tfMotDePasse_inscription.getText() + "', '1', '0');";
 					Connect.state.executeUpdate(query);
 					JOptionPane.showMessageDialog(frame, "Inscription réussie.");
 					Adherent.init();
@@ -1285,7 +1344,8 @@ public class GUI {
 				etat = connecte;
 				utilisateurCourant = Adherent.getAdherent(Integer.valueOf(Connect.result.getObject(1).toString()));
 				if (!utilisateurCourant.actif) {
-					String update = "UPDATE adherent SET actif = 1 WHERE idAdherent = " + utilisateurCourant.idAdherent + ";";
+					String update = "UPDATE adherent SET actif = 1 WHERE idAdherent = " + utilisateurCourant.idAdherent
+							+ ";";
 					Connect.state.executeUpdate(update);
 					utilisateurCourant.actif = true;
 					JOptionPane.showMessageDialog(frame, "Votre compte a été réactivé !");
@@ -1312,7 +1372,7 @@ public class GUI {
 				String mes = utilisateurCourant.hasReservation();
 				if (!mes.equals("null")) {
 					System.out.println(mes);
-					JOptionPane.showMessageDialog(frame, mes);					
+					JOptionPane.showMessageDialog(frame, mes);
 				}
 				affichage();
 			}
@@ -1434,7 +1494,7 @@ public class GUI {
 	}
 
 	public void rendre() throws SQLException, ParseException {
-		if(empruntCourant == null) {
+		if (empruntCourant == null) {
 			JOptionPane.showMessageDialog(frame, "Aucun emprunt sélectionné.");
 			return;
 		}
@@ -1446,7 +1506,7 @@ public class GUI {
 	}
 
 	public void prolonger() throws SQLException, ParseException {
-		if(empruntCourant == null) {
+		if (empruntCourant == null) {
 			JOptionPane.showMessageDialog(frame, "Aucun emprunt sélectionné.");
 			return;
 		}
@@ -1459,26 +1519,10 @@ public class GUI {
 		produitCourant = null;
 	}
 
-	/**
-	 * Create the application.
-	 * 
-	 * @throws ParseException
-	 * @throws SQLException
-	 * @throws NumberFormatException
-	 * @throws ClassNotFoundException
-	 */
 	public GUI() throws NumberFormatException, SQLException, ParseException, ClassNotFoundException {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @throws ParseException
-	 * @throws SQLException
-	 * @throws NumberFormatException
-	 * @throws ClassNotFoundException
-	 */
 	private void initialize() throws NumberFormatException, SQLException, ParseException, ClassNotFoundException {
 		Connect.init();
 		frame = new JFrame();
