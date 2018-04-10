@@ -117,5 +117,12 @@ public class Produit {
 		Connect.result = Connect.state.executeQuery(query);
 		return Connect.result.next();
 	}
+	
+	public boolean isReserve(Integer idProduit) throws SQLException {
+		String query = "SELECT * FROM reserver WHERE p.idProduit = " + idProduit + ";";
+		Connect.result = Connect.state.executeQuery(query);
+		return Connect.result.next();
+		
+	}
 
 }

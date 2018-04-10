@@ -125,11 +125,16 @@ public class Adherent {
 	 * @param idProduit
 	 * @throws SQLException
 	 */
-	public void reserver(Integer idProduit) throws SQLException {
+	public int reserver(Integer idProduit) throws SQLException {
+		Produit p = Produit.getProduit(idProduit);
+		Integer dispo = p.getExemplaireDispo();
+		if (dispo != -1)
+			return -1;
 		Date date = new Date();
 		String query = "INSERT INTO reserver (idAdherent, idProduit, dateReservation) VALUES ('" + idAdherent + "', '"
 				+ idProduit + "', '" + dateFormat.format(date) + "');";
 		Connect.state.executeUpdate(query);
+		return 0;
 	}
 
 	public List<Emprunt> emprunts() throws SQLException, ParseException {
@@ -196,33 +201,41 @@ public class Adherent {
 		} else
 			return null;
 	}
-	
-	public void rendre(Emprunt emp) throws SQLException {
+
+	public int rendre(Emprunt emp) throws SQLException {
+		if (emp.retoune())
+			return 1;
 		Date date = new Date();
-		String query = "UPDATE emprunter SET dateRetour = '" + dateFormat.format(date) + "' WHERE idExemplaire = " + emp.idExemplaire;
-		Connect.state.executeUpdate(query);	
-		if(emp.retard()) {
+		String query = "UPDATE emprunter SET dateRetour = '" + dateFormat.format(date) + "' WHERE idExemplaire = "
+				+ emp.idExemplaire;
+		Connect.state.executeUpdate(query);
+		if (emp.retard()) {
 			nbRetard++;
 			query = "UPDATE adherent SET nbRetard = '" + nbRetard + "' WHERE idAdherent = " + emp.idAdherent;
 		}
 		emp.dateRetour = date;
+		return 0;
 	}
 
 	public int prolonger(Emprunt emp) throws SQLException {
-		if(nbRetard >= 5) {
+		if (nbRetard >= 5) {
 			return -1;
 		}
+		if (emp.retoune())
+			return 1;
 		Calendar dateLimite = Calendar.getInstance();
 		dateLimite.setTime(emp.dateLimite);
 		dateLimite.add(Calendar.WEEK_OF_YEAR, 1);
 		emp.dateLimite = dateLimite.getTime();
-		String query = "UPDATE emprunter SET dateLimite = '" + dateFormat.format(emp.dateLimite) + "' WHERE idExemplaire = " + emp.idExemplaire;
-		Connect.state.executeUpdate(query);		
+		String query = "UPDATE emprunter SET dateLimite = '" + dateFormat.format(emp.dateLimite)
+				+ "' WHERE idExemplaire = " + emp.idExemplaire;
+		Connect.state.executeUpdate(query);
 		return 0;
 	}
+
 	public int desactiver() throws SQLException, ParseException {
 		List<Emprunt> emprunts = emprunts();
-		if(!emprunts.isEmpty()) {
+		if (!emprunts.isEmpty()) {
 			String query = "SELECT * FROM emprunter WHERE idAdherent = '" + idAdherent + "' AND dateRetour IS NULL;";
 			Connect.result = Connect.state.executeQuery(query);
 			if (Connect.result.next())
@@ -234,19 +247,35 @@ public class Adherent {
 		Connect.state.executeUpdate(query);
 		return 0;
 	}
-	
+
 	public void setAdresse(String adresse) throws SQLException {
-		String query = "UPDATE adherent SET adresse = '" + adresse + "' WHERE idAdherent = "+ idAdherent + ";";
-		Connect.state.executeUpdate(query);		
-	}	
-	public void setMail(String mail) throws SQLException {
-		String query = "UPDATE adherent SET eMail = '" + mail + "' WHERE idAdherent = "+ idAdherent + ";";
-		Connect.state.executeUpdate(query);		
+		String query = "UPDATE adherent SET adresse = '" + adresse + "' WHERE idAdherent = " + idAdherent + ";";
+		Connect.state.executeUpdate(query);
 	}
-	
-	public void setPassword(String password) throws SQLException {
-		String query = "UPDATE adherent SET MotDePasse = '" + password + "' WHERE idAdherent = "+ idAdherent + ";";
-		Connect.state.executeUpdate(query);		
+
+	public void setMail(String mail) throws SQLException {
+		String query = "UPDATE adherent SET eMail = '" + mail + "' WHERE idAdherent = " + idAdherent + ";";
+		Connect.state.executeUpdate(query);
+	}
+
+	public void setMotDePasse(String password) throws SQLException {
+		String query = "UPDATE adherent SET MotDePasse = '" + password + "' WHERE idAdherent = " + idAdherent + ";";
+		Connect.state.executeUpdate(query);
+	}
+
+	public String hasReservation() throws SQLException {
+		String query = "SELECT idProduit FROM reserver WHERE idAdherent = " + idAdherent + ";";
+		Connect.result = Connect.state.executeQuery(query);
+		String mes = "Vous avez une(des) réservation(s) disponible(s) : \n";
+		if (Connect.result.next()) {
+			Produit p = Produit.getProduit(Connect.result.getInt(1));
+			if (p.getExemplaireDispo() != -1)
+				mes += "  -  " + p.Titre + "\n";
+		} else {
+			return "null";
+		}
+		System.out.println(mes);
+		return mes;
 	}
 
 }

@@ -41,53 +41,53 @@ public class GUI {
 	private static final int NOM = 1;
 	private static final int GENRE = 2;
 
-	public static final int connected = 1;
-	public static final int loginScreen = 2;
-	public static final int signIn = 3;
-	public static final int profile = 4;
+	public static final int connecte = 1;
+	public static final int accueil = 2;
+	public static final int inscription = 3;
+	public static final int profil = 4;
 
-	public int state = loginScreen;
+	public int etat = accueil;
 	private JFrame frame;
 	private SpringLayout springLayout;
-	private Produit selectedProduct;
-	private Adherent currentUser;
-	private Emprunt selectedEmprunt;
+	private Produit produitCourant;
+	private Adherent utilisateurCourant;
+	private Emprunt empruntCourant;
 
 	/*** Elements login ***/
-	private ArrayList<Object> loginList = new ArrayList<>();
-	private JTextField tfUsername_login;
-	private JTextField tfPassword_login;
-	private JLabel lblTitre_login;
-	private JLabel lblConnexion_login;
-	private JLabel lblCreerCompte_login;
-	private JLabel lblNomDutilisateur_login;
-	private JLabel lblMotDePasse_login;
-	private JButton btnConnect_login;
+	private ArrayList<Object> listAccueil = new ArrayList<>();
+	private JTextField tfMail_accueil;
+	private JTextField tfMotDePasse_accueil;
+	private JLabel lblTitre_accueil;
+	private JLabel lblConnexion_accueil;
+	private JLabel lblCreerCompte_accueil;
+	private JLabel lblNomDutilisateur_accueil;
+	private JLabel lblMotDePasse_accueil;
+	private JButton btnConnect_accueil;
 
 	/*** Elements signin ***/
 	private ArrayList<Object> signinList = new ArrayList<>();
-	private JTextField tfUsername_signin;
-	private JTextField tfPassword_signin;
-	private JTextField tfPasswordBis_signin;
-	private JTextField tfAddress_signin;
-	private JTextField tfFirstName_signin;
-	private JTextField tfLastName_signin;
-	private JComboBox<Integer> tfDateDay_signin;
-	private JComboBox<Integer> tfDateMonth_signin;
-	private JComboBox<Integer> tfDateYear_signin;
-	private JLabel lblTitre_signin;
-	private JLabel lblMail_signin;
-	private JLabel lblMotDePasse_signin;
-	private JLabel lblMotDePasseBis_signin;
-	private JLabel lblRetour_signin;
-	private JLabel lblAddress_signin;
-	private JLabel lblFirstName_signin;
-	private JLabel lblLastName_signin;
-	private JLabel lblDate_signin;
-	private JButton btnCreate_signin;
+	private JTextField tfMail_inscription;
+	private JTextField tfMotDePasse_inscription;
+	private JTextField tfMotDePasseBis_inscription;
+	private JTextField tfAdresse_inscription;
+	private JTextField tfPrenom_inscription;
+	private JTextField tfNom_inscription;
+	private JComboBox<Integer> tfDateJour_inscription;
+	private JComboBox<Integer> tfDateMois_inscription;
+	private JComboBox<Integer> tfDateAnnee_inscription;
+	private JLabel lblTitre_inscription;
+	private JLabel lblMail_inscription;
+	private JLabel lblMotDePasse_inscription;
+	private JLabel lblMotDePasseBis_inscription;
+	private JLabel lblRetour_inscription;
+	private JLabel lblAdresse_inscription;
+	private JLabel lblPrenom_inscription;
+	private JLabel lblNom_inscription;
+	private JLabel lblDate_inscription;
+	private JButton btnCreer_inscription;
 
-	/*** Elements connected ***/
-	private ArrayList<Object> connectedList = new ArrayList<>();
+	/*** Elements connecte ***/
+	private ArrayList<Object> listConnect = new ArrayList<>();
 	private JTextField tfRecherche_connect;
 	private JButton btnRechercher_connect;
 	private JScrollPane scrollPane_connect;
@@ -108,8 +108,8 @@ public class GUI {
 	private JButton btnSeDconnecter_connect;
 	private JSeparator separator_connect;
 
-	/*** Elements profile ***/
-	private ArrayList<Object> profileList = new ArrayList<>();
+	/*** Elements profil ***/
+	private ArrayList<Object> listProfil = new ArrayList<>();
 	private JLabel lblEmprunts_prof;
 	private JScrollPane scrollPane_prof;
 	private JPanel listPanel_prof;
@@ -145,42 +145,44 @@ public class GUI {
 					GUI window = new GUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
+					JOptionPane.showMessageDialog(new JFrame(),
+							"La base de données n'a pas été iniialisée.");
 					e.printStackTrace();
 				}
 			}
 		});
 	}
 
-	public void initLogin(JFrame frame, SpringLayout springLayout) {
-		lblTitre_login = new JLabel("MEDIATHEQUA");
-		springLayout.putConstraint(SpringLayout.NORTH, lblTitre_login, (int) (frame.getHeight() * 0.1),
+	public void initAccueil(JFrame frame, SpringLayout springLayout) {
+		lblTitre_accueil = new JLabel("MEDIATHEQUA");
+		springLayout.putConstraint(SpringLayout.NORTH, lblTitre_accueil, (int) (frame.getHeight() * 0.1),
 				SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblTitre_login, 0, SpringLayout.HORIZONTAL_CENTER,
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblTitre_accueil, 0, SpringLayout.HORIZONTAL_CENTER,
 				frame.getContentPane());
-		lblTitre_login.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		frame.getContentPane().add(lblTitre_login);
+		lblTitre_accueil.setFont(new Font("Tahoma", Font.PLAIN, 60));
+		frame.getContentPane().add(lblTitre_accueil);
 
-		lblConnexion_login = new JLabel("Connexion");
-		springLayout.putConstraint(SpringLayout.NORTH, lblConnexion_login, (int) (frame.getHeight() * 0.22),
+		lblConnexion_accueil = new JLabel("Connexion");
+		springLayout.putConstraint(SpringLayout.NORTH, lblConnexion_accueil, (int) (frame.getHeight() * 0.22),
 				SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblConnexion_login, 0,
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblConnexion_accueil, 0,
 				SpringLayout.HORIZONTAL_CENTER, frame.getContentPane());
-		lblConnexion_login.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		frame.getContentPane().add(lblConnexion_login);
+		lblConnexion_accueil.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		frame.getContentPane().add(lblConnexion_accueil);
 
-		lblNomDutilisateur_login = new JLabel("Nom d'utilisateur : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNomDutilisateur_login, (int) (frame.getHeight() * 0.3),
+		lblNomDutilisateur_accueil = new JLabel("Nom d'utilisateur : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNomDutilisateur_accueil, (int) (frame.getHeight() * 0.3),
 				SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, lblNomDutilisateur_login, (int) (frame.getWidth() * 0.45),
+		springLayout.putConstraint(SpringLayout.EAST, lblNomDutilisateur_accueil, (int) (frame.getWidth() * 0.45),
 				SpringLayout.WEST, frame.getContentPane());
-		lblNomDutilisateur_login.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblNomDutilisateur_login);
-		lblNomDutilisateur_login.addKeyListener(new KeyAdapter() {
+		lblNomDutilisateur_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblNomDutilisateur_accueil);
+		lblNomDutilisateur_accueil.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
-						connect();
+						connecter();
 					} catch (NumberFormatException | ParseException | SQLException e) {
 						JOptionPane.showMessageDialog(frame, "Erreur critique lors de la connexion.");
 						frame.dispose();
@@ -190,33 +192,33 @@ public class GUI {
 			}
 		});
 
-		lblMotDePasse_login = new JLabel("Mot de passe : ");
-		lblMotDePasse_login.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasse_login, 6, SpringLayout.SOUTH,
-				lblNomDutilisateur_login);
-		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasse_login, 0, SpringLayout.EAST,
-				lblNomDutilisateur_login);
-		frame.getContentPane().add(lblMotDePasse_login);
+		lblMotDePasse_accueil = new JLabel("Mot de passe : ");
+		lblMotDePasse_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasse_accueil, 6, SpringLayout.SOUTH,
+				lblNomDutilisateur_accueil);
+		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasse_accueil, 0, SpringLayout.EAST,
+				lblNomDutilisateur_accueil);
+		frame.getContentPane().add(lblMotDePasse_accueil);
 
-		tfUsername_login = new JTextField();
-		tfUsername_login.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfUsername_login, 0, SpringLayout.NORTH,
-				lblNomDutilisateur_login);
-		springLayout.putConstraint(SpringLayout.WEST, tfUsername_login, 5, SpringLayout.EAST, lblNomDutilisateur_login);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfUsername_login, 0, SpringLayout.SOUTH,
-				lblNomDutilisateur_login);
-		springLayout.putConstraint(SpringLayout.EAST, tfUsername_login, 340, SpringLayout.EAST,
-				lblNomDutilisateur_login);
-		frame.getContentPane().add(tfUsername_login);
-		tfUsername_login.setColumns(10);
+		tfMail_accueil = new JTextField();
+		tfMail_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfMail_accueil, 0, SpringLayout.NORTH,
+				lblNomDutilisateur_accueil);
+		springLayout.putConstraint(SpringLayout.WEST, tfMail_accueil, 5, SpringLayout.EAST, lblNomDutilisateur_accueil);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMail_accueil, 0, SpringLayout.SOUTH,
+				lblNomDutilisateur_accueil);
+		springLayout.putConstraint(SpringLayout.EAST, tfMail_accueil, 340, SpringLayout.EAST,
+				lblNomDutilisateur_accueil);
+		frame.getContentPane().add(tfMail_accueil);
+		tfMail_accueil.setColumns(10);
 
-		tfPassword_login = new JPasswordField();
-		tfPassword_login.addKeyListener(new KeyAdapter() {
+		tfMotDePasse_accueil = new JPasswordField();
+		tfMotDePasse_accueil.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
-						connect();
+						connecter();
 					} catch (NumberFormatException | ParseException | SQLException e) {
 						JOptionPane.showMessageDialog(frame, "Erreur critique lors de la connexion.");
 						frame.dispose();
@@ -225,20 +227,20 @@ public class GUI {
 				}
 			}
 		});
-		tfPassword_login.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfPassword_login, 0, SpringLayout.NORTH, lblMotDePasse_login);
-		springLayout.putConstraint(SpringLayout.WEST, tfPassword_login, 5, SpringLayout.EAST, lblMotDePasse_login);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfPassword_login, 0, SpringLayout.SOUTH, lblMotDePasse_login);
-		springLayout.putConstraint(SpringLayout.EAST, tfPassword_login, 340, SpringLayout.EAST, lblMotDePasse_login);
-		tfPassword_login.setColumns(10);
-		frame.getContentPane().add(tfPassword_login);
+		tfMotDePasse_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasse_accueil, 0, SpringLayout.NORTH, lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasse_accueil, 5, SpringLayout.EAST, lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasse_accueil, 0, SpringLayout.SOUTH, lblMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasse_accueil, 340, SpringLayout.EAST, lblMotDePasse_accueil);
+		tfMotDePasse_accueil.setColumns(10);
+		frame.getContentPane().add(tfMotDePasse_accueil);
 
-		btnConnect_login = new JButton("Se connecter");
-		btnConnect_login.addMouseListener(new MouseAdapter() {
+		btnConnect_accueil = new JButton("Se connecter");
+		btnConnect_accueil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					connect();
+					connecter();
 				} catch (NumberFormatException | ParseException | SQLException e) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la connexion.");
 					frame.dispose();
@@ -246,12 +248,12 @@ public class GUI {
 				}
 			}
 		});
-		btnConnect_login.addKeyListener(new KeyAdapter() {
+		btnConnect_accueil.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
-						connect();
+						connecter();
 					} catch (NumberFormatException | ParseException | SQLException e) {
 						JOptionPane.showMessageDialog(frame, "Erreur critique lors de la connexion.");
 						frame.dispose();
@@ -260,21 +262,21 @@ public class GUI {
 				}
 			}
 		});
-		springLayout.putConstraint(SpringLayout.WEST, btnConnect_login, 340, SpringLayout.WEST,
-				lblNomDutilisateur_login);
-		btnConnect_login.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, btnConnect_login, 6, SpringLayout.SOUTH, tfPassword_login);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnConnect_login, 37, SpringLayout.SOUTH, tfPassword_login);
-		springLayout.putConstraint(SpringLayout.EAST, btnConnect_login, 0, SpringLayout.EAST, tfUsername_login);
-		frame.getContentPane().add(btnConnect_login);
+		springLayout.putConstraint(SpringLayout.WEST, btnConnect_accueil, 340, SpringLayout.WEST,
+				lblNomDutilisateur_accueil);
+		btnConnect_accueil.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, btnConnect_accueil, 6, SpringLayout.SOUTH, tfMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnConnect_accueil, 37, SpringLayout.SOUTH, tfMotDePasse_accueil);
+		springLayout.putConstraint(SpringLayout.EAST, btnConnect_accueil, 0, SpringLayout.EAST, tfMail_accueil);
+		frame.getContentPane().add(btnConnect_accueil);
 
-		lblCreerCompte_login = new JLabel("Vous n'avez de compte ? Cr\u00E9ez-en un ici !");
-		lblCreerCompte_login.addMouseListener(new MouseAdapter() {
+		lblCreerCompte_accueil = new JLabel("Vous n'avez de compte ? Cr\u00E9ez-en un ici !");
+		lblCreerCompte_accueil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				state = signIn;
+				etat = inscription;
 				try {
-					display();
+					affichage();
 				} catch (NumberFormatException | SQLException | ParseException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors du changement d'écran.");
 					frame.dispose();
@@ -282,162 +284,162 @@ public class GUI {
 				}
 			}
 		});
-		lblCreerCompte_login.setForeground(Color.BLUE);
-		lblCreerCompte_login.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblCreerCompte_login, 0,
+		lblCreerCompte_accueil.setForeground(Color.BLUE);
+		lblCreerCompte_accueil.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblCreerCompte_accueil, 0,
 				SpringLayout.HORIZONTAL_CENTER, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, lblCreerCompte_login, -10, SpringLayout.SOUTH,
+		springLayout.putConstraint(SpringLayout.SOUTH, lblCreerCompte_accueil, -10, SpringLayout.SOUTH,
 				frame.getContentPane());
-		frame.getContentPane().add(lblCreerCompte_login);
+		frame.getContentPane().add(lblCreerCompte_accueil);
 
-		loginList.add(tfUsername_login);
-		loginList.add(tfPassword_login);
-		loginList.add(lblTitre_login);
-		loginList.add(lblConnexion_login);
-		loginList.add(lblCreerCompte_login);
-		loginList.add(lblNomDutilisateur_login);
-		loginList.add(lblMotDePasse_login);
-		loginList.add(btnConnect_login);
+		listAccueil.add(tfMail_accueil);
+		listAccueil.add(tfMotDePasse_accueil);
+		listAccueil.add(lblTitre_accueil);
+		listAccueil.add(lblConnexion_accueil);
+		listAccueil.add(lblCreerCompte_accueil);
+		listAccueil.add(lblNomDutilisateur_accueil);
+		listAccueil.add(lblMotDePasse_accueil);
+		listAccueil.add(btnConnect_accueil);
 
 	}
 
-	public void initSingIn(JFrame frame, SpringLayout springLayout) {
-		lblTitre_signin = new JLabel("CREATION DE COMPTE");
-		springLayout.putConstraint(SpringLayout.NORTH, lblTitre_signin, (int) (frame.getHeight() * 0.22),
+	public void initInscription(JFrame frame, SpringLayout springLayout) {
+		lblTitre_inscription = new JLabel("CREATION DE COMPTE");
+		springLayout.putConstraint(SpringLayout.NORTH, lblTitre_inscription, (int) (frame.getHeight() * 0.22),
 				SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblTitre_signin, 0, SpringLayout.HORIZONTAL_CENTER,
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblTitre_inscription, 0, SpringLayout.HORIZONTAL_CENTER,
 				frame.getContentPane());
-		lblTitre_signin.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		frame.getContentPane().add(lblTitre_signin);
+		lblTitre_inscription.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		frame.getContentPane().add(lblTitre_inscription);
 
-		lblMail_signin = new JLabel("Adresse mail : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblMail_signin, (int) (frame.getHeight() * 0.3),
+		lblMail_inscription = new JLabel("Adresse mail : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblMail_inscription, (int) (frame.getHeight() * 0.3),
 				SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, lblMail_signin, (int) (frame.getWidth() * 0.45),
+		springLayout.putConstraint(SpringLayout.EAST, lblMail_inscription, (int) (frame.getWidth() * 0.45),
 				SpringLayout.WEST, frame.getContentPane());
-		lblMail_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblMail_signin);
+		lblMail_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblMail_inscription);
 
-		lblFirstName_signin = new JLabel("Prénom : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblFirstName_signin, 6, SpringLayout.SOUTH, lblMail_signin);
-		springLayout.putConstraint(SpringLayout.EAST, lblFirstName_signin, 0, SpringLayout.EAST, lblMail_signin);
-		lblFirstName_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblFirstName_signin);
+		lblPrenom_inscription = new JLabel("Prénom : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblPrenom_inscription, 6, SpringLayout.SOUTH, lblMail_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblPrenom_inscription, 0, SpringLayout.EAST, lblMail_inscription);
+		lblPrenom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblPrenom_inscription);
 
-		lblLastName_signin = new JLabel("Nom : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblLastName_signin, 6, SpringLayout.SOUTH, lblFirstName_signin);
-		springLayout.putConstraint(SpringLayout.EAST, lblLastName_signin, 0, SpringLayout.EAST, lblFirstName_signin);
-		lblLastName_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblLastName_signin);
+		lblNom_inscription = new JLabel("Nom : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNom_inscription, 6, SpringLayout.SOUTH, lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblNom_inscription, 0, SpringLayout.EAST, lblPrenom_inscription);
+		lblNom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblNom_inscription);
 
-		lblAddress_signin = new JLabel("Adresse : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblAddress_signin, 6, SpringLayout.SOUTH, lblLastName_signin);
-		springLayout.putConstraint(SpringLayout.EAST, lblAddress_signin, 0, SpringLayout.EAST, lblLastName_signin);
-		lblAddress_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblAddress_signin);
+		lblAdresse_inscription = new JLabel("Adresse : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblAdresse_inscription, 6, SpringLayout.SOUTH, lblNom_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblAdresse_inscription, 0, SpringLayout.EAST, lblNom_inscription);
+		lblAdresse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblAdresse_inscription);
 
-		lblDate_signin = new JLabel("Date de naissance : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblDate_signin, 6, SpringLayout.SOUTH, lblAddress_signin);
-		springLayout.putConstraint(SpringLayout.EAST, lblDate_signin, 0, SpringLayout.EAST, lblAddress_signin);
-		lblDate_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblDate_signin);
+		lblDate_inscription = new JLabel("Date de naissance : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblDate_inscription, 6, SpringLayout.SOUTH, lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblDate_inscription, 0, SpringLayout.EAST, lblAdresse_inscription);
+		lblDate_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblDate_inscription);
 
-		lblMotDePasse_signin = new JLabel("Mot de passe : ");
-		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasse_signin, 6, SpringLayout.SOUTH, lblDate_signin);
-		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasse_signin, 0, SpringLayout.EAST, lblDate_signin);
-		lblMotDePasse_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		frame.getContentPane().add(lblMotDePasse_signin);
+		lblMotDePasse_inscription = new JLabel("Mot de passe : ");
+		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasse_inscription, 6, SpringLayout.SOUTH, lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasse_inscription, 0, SpringLayout.EAST, lblDate_inscription);
+		lblMotDePasse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		frame.getContentPane().add(lblMotDePasse_inscription);
 
-		lblMotDePasseBis_signin = new JLabel("Répétez votre mot de passe : ");
-		lblMotDePasseBis_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasseBis_signin, 6, SpringLayout.SOUTH,
-				lblMotDePasse_signin);
-		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasseBis_signin, 0, SpringLayout.EAST,
-				lblMotDePasse_signin);
-		frame.getContentPane().add(lblMotDePasseBis_signin);
+		lblMotDePasseBis_inscription = new JLabel("Répétez votre mot de passe : ");
+		lblMotDePasseBis_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, lblMotDePasseBis_inscription, 6, SpringLayout.SOUTH,
+				lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, lblMotDePasseBis_inscription, 0, SpringLayout.EAST,
+				lblMotDePasse_inscription);
+		frame.getContentPane().add(lblMotDePasseBis_inscription);
 
-		tfUsername_signin = new JTextField();
-		tfUsername_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfUsername_signin, 0, SpringLayout.NORTH, lblMail_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfUsername_signin, 5, SpringLayout.EAST, lblMail_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfUsername_signin, 0, SpringLayout.SOUTH, lblMail_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfUsername_signin, 340, SpringLayout.EAST, lblMail_signin);
-		frame.getContentPane().add(tfUsername_signin);
-		tfUsername_signin.setColumns(10);
+		tfMail_inscription = new JTextField();
+		tfMail_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfMail_inscription, 0, SpringLayout.NORTH, lblMail_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfMail_inscription, 5, SpringLayout.EAST, lblMail_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMail_inscription, 0, SpringLayout.SOUTH, lblMail_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfMail_inscription, 340, SpringLayout.EAST, lblMail_inscription);
+		frame.getContentPane().add(tfMail_inscription);
+		tfMail_inscription.setColumns(10);
 
-		tfFirstName_signin = new JTextField();
-		tfFirstName_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfFirstName_signin, 0, SpringLayout.NORTH, lblFirstName_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfFirstName_signin, 5, SpringLayout.EAST, lblFirstName_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfFirstName_signin, 0, SpringLayout.SOUTH, lblFirstName_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfFirstName_signin, 340, SpringLayout.EAST, lblFirstName_signin);
-		tfFirstName_signin.setColumns(10);
-		frame.getContentPane().add(tfFirstName_signin);
+		tfPrenom_inscription = new JTextField();
+		tfPrenom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfPrenom_inscription, 0, SpringLayout.NORTH, lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfPrenom_inscription, 5, SpringLayout.EAST, lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfPrenom_inscription, 0, SpringLayout.SOUTH, lblPrenom_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfPrenom_inscription, 340, SpringLayout.EAST, lblPrenom_inscription);
+		tfPrenom_inscription.setColumns(10);
+		frame.getContentPane().add(tfPrenom_inscription);
 
-		tfLastName_signin = new JTextField();
-		tfLastName_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfLastName_signin, 0, SpringLayout.NORTH, lblLastName_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfLastName_signin, 5, SpringLayout.EAST, lblLastName_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfLastName_signin, 0, SpringLayout.SOUTH, lblLastName_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfLastName_signin, 340, SpringLayout.EAST, lblLastName_signin);
-		tfLastName_signin.setColumns(10);
-		frame.getContentPane().add(tfLastName_signin);
+		tfNom_inscription = new JTextField();
+		tfNom_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfNom_inscription, 0, SpringLayout.NORTH, lblNom_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfNom_inscription, 5, SpringLayout.EAST, lblNom_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfNom_inscription, 0, SpringLayout.SOUTH, lblNom_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfNom_inscription, 340, SpringLayout.EAST, lblNom_inscription);
+		tfNom_inscription.setColumns(10);
+		frame.getContentPane().add(tfNom_inscription);
 
-		tfAddress_signin = new JTextField();
-		tfAddress_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfAddress_signin, 0, SpringLayout.NORTH, lblAddress_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfAddress_signin, 5, SpringLayout.EAST, lblAddress_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfAddress_signin, 0, SpringLayout.SOUTH, lblAddress_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfAddress_signin, 340, SpringLayout.EAST, lblAddress_signin);
-		tfAddress_signin.setColumns(10);
-		frame.getContentPane().add(tfAddress_signin);
+		tfAdresse_inscription = new JTextField();
+		tfAdresse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfAdresse_inscription, 0, SpringLayout.NORTH, lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfAdresse_inscription, 5, SpringLayout.EAST, lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfAdresse_inscription, 0, SpringLayout.SOUTH, lblAdresse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfAdresse_inscription, 340, SpringLayout.EAST, lblAdresse_inscription);
+		tfAdresse_inscription.setColumns(10);
+		frame.getContentPane().add(tfAdresse_inscription);
 
-		tfDateDay_signin = new JComboBox<Integer>();
-		tfDateDay_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfDateDay_signin, 0, SpringLayout.NORTH, lblDate_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfDateDay_signin, 6, SpringLayout.EAST, lblDate_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfDateDay_signin, 0, SpringLayout.SOUTH, lblDate_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfDateDay_signin, 85, SpringLayout.EAST, lblDate_signin);
-		frame.getContentPane().add(tfDateDay_signin);
+		tfDateJour_inscription = new JComboBox<Integer>();
+		tfDateJour_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfDateJour_inscription, 0, SpringLayout.NORTH, lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfDateJour_inscription, 6, SpringLayout.EAST, lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfDateJour_inscription, 0, SpringLayout.SOUTH, lblDate_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfDateJour_inscription, 85, SpringLayout.EAST, lblDate_inscription);
+		frame.getContentPane().add(tfDateJour_inscription);
 		for (int i = 1; i <= 31; i++)
-			tfDateDay_signin.addItem(i);
+			tfDateJour_inscription.addItem(i);
 
-		tfDateMonth_signin = new JComboBox<Integer>();
-		tfDateMonth_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfDateMonth_signin, 0, SpringLayout.NORTH, tfDateDay_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfDateMonth_signin, 6, SpringLayout.EAST, tfDateDay_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfDateMonth_signin, 0, SpringLayout.SOUTH, tfDateDay_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfDateMonth_signin, 85, SpringLayout.EAST, tfDateDay_signin);
-		frame.getContentPane().add(tfDateMonth_signin);
+		tfDateMois_inscription = new JComboBox<Integer>();
+		tfDateMois_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfDateMois_inscription, 0, SpringLayout.NORTH, tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfDateMois_inscription, 6, SpringLayout.EAST, tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfDateMois_inscription, 0, SpringLayout.SOUTH, tfDateJour_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfDateMois_inscription, 85, SpringLayout.EAST, tfDateJour_inscription);
+		frame.getContentPane().add(tfDateMois_inscription);
 		for (int i = 1; i <= 12; i++)
-			tfDateMonth_signin.addItem(i);
+			tfDateMois_inscription.addItem(i);
 
-		tfDateYear_signin = new JComboBox<Integer>();
-		tfDateYear_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfDateYear_signin, 0, SpringLayout.NORTH, tfDateMonth_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfDateYear_signin, 6, SpringLayout.EAST, tfDateMonth_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfDateYear_signin, 0, SpringLayout.SOUTH, tfDateMonth_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfDateYear_signin, 170, SpringLayout.EAST, tfDateMonth_signin);
-		frame.getContentPane().add(tfDateYear_signin);
+		tfDateAnnee_inscription = new JComboBox<Integer>();
+		tfDateAnnee_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfDateAnnee_inscription, 0, SpringLayout.NORTH, tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfDateAnnee_inscription, 6, SpringLayout.EAST, tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfDateAnnee_inscription, 0, SpringLayout.SOUTH, tfDateMois_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfDateAnnee_inscription, 170, SpringLayout.EAST, tfDateMois_inscription);
+		frame.getContentPane().add(tfDateAnnee_inscription);
 		for (int i = 1920; i <= 2017; i++)
-			tfDateYear_signin.addItem(i);
+			tfDateAnnee_inscription.addItem(i);
 
-		tfPassword_signin = new JPasswordField();
-		tfPassword_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfPassword_signin, 0, SpringLayout.NORTH, lblMotDePasse_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfPassword_signin, 5, SpringLayout.EAST, lblMotDePasse_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfPassword_signin, 0, SpringLayout.SOUTH, lblMotDePasse_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfPassword_signin, 340, SpringLayout.EAST, lblMotDePasse_signin);
-		tfPassword_signin.setColumns(10);
-		frame.getContentPane().add(tfPassword_signin);
+		tfMotDePasse_inscription = new JPasswordField();
+		tfMotDePasse_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasse_inscription, 0, SpringLayout.NORTH, lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasse_inscription, 5, SpringLayout.EAST, lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasse_inscription, 0, SpringLayout.SOUTH, lblMotDePasse_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasse_inscription, 340, SpringLayout.EAST, lblMotDePasse_inscription);
+		tfMotDePasse_inscription.setColumns(10);
+		frame.getContentPane().add(tfMotDePasse_inscription);
 
-		tfPasswordBis_signin = new JPasswordField();
-		tfPasswordBis_signin.addKeyListener(new KeyAdapter() {
+		tfMotDePasseBis_inscription = new JPasswordField();
+		tfMotDePasseBis_inscription.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
-						createUser();
+						creerUtilisateur();
 					} catch (NumberFormatException | ParseException e) {
 						JOptionPane.showMessageDialog(frame, "Erreur critique lors de l'inscription.");
 						frame.dispose();
@@ -445,24 +447,24 @@ public class GUI {
 				}
 			}
 		});
-		tfPasswordBis_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, tfPasswordBis_signin, 0, SpringLayout.NORTH,
-				lblMotDePasseBis_signin);
-		springLayout.putConstraint(SpringLayout.WEST, tfPasswordBis_signin, 5, SpringLayout.EAST,
-				lblMotDePasseBis_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, tfPasswordBis_signin, 0, SpringLayout.SOUTH,
-				lblMotDePasseBis_signin);
-		springLayout.putConstraint(SpringLayout.EAST, tfPasswordBis_signin, 340, SpringLayout.EAST,
-				lblMotDePasseBis_signin);
-		tfPasswordBis_signin.setColumns(10);
-		frame.getContentPane().add(tfPasswordBis_signin);
+		tfMotDePasseBis_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, tfMotDePasseBis_inscription, 0, SpringLayout.NORTH,
+				lblMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.WEST, tfMotDePasseBis_inscription, 5, SpringLayout.EAST,
+				lblMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, tfMotDePasseBis_inscription, 0, SpringLayout.SOUTH,
+				lblMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, tfMotDePasseBis_inscription, 340, SpringLayout.EAST,
+				lblMotDePasseBis_inscription);
+		tfMotDePasseBis_inscription.setColumns(10);
+		frame.getContentPane().add(tfMotDePasseBis_inscription);
 
-		btnCreate_signin = new JButton("Créer");
-		btnCreate_signin.addMouseListener(new MouseAdapter() {
+		btnCreer_inscription = new JButton("Créer");
+		btnCreer_inscription.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					createUser();
+					creerUtilisateur();
 				} catch (NumberFormatException | ParseException e) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de l'inscription.");
 					frame.dispose();
@@ -470,20 +472,20 @@ public class GUI {
 				}
 			}
 		});
-		springLayout.putConstraint(SpringLayout.WEST, btnCreate_signin, 340, SpringLayout.WEST, lblMail_signin);
-		btnCreate_signin.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		springLayout.putConstraint(SpringLayout.NORTH, btnCreate_signin, 6, SpringLayout.SOUTH, tfPasswordBis_signin);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnCreate_signin, 37, SpringLayout.SOUTH, tfPasswordBis_signin);
-		springLayout.putConstraint(SpringLayout.EAST, btnCreate_signin, 0, SpringLayout.EAST, tfUsername_signin);
-		frame.getContentPane().add(btnCreate_signin);
+		springLayout.putConstraint(SpringLayout.WEST, btnCreer_inscription, 340, SpringLayout.WEST, lblMail_inscription);
+		btnCreer_inscription.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		springLayout.putConstraint(SpringLayout.NORTH, btnCreer_inscription, 6, SpringLayout.SOUTH, tfMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnCreer_inscription, 37, SpringLayout.SOUTH, tfMotDePasseBis_inscription);
+		springLayout.putConstraint(SpringLayout.EAST, btnCreer_inscription, 0, SpringLayout.EAST, tfMail_inscription);
+		frame.getContentPane().add(btnCreer_inscription);
 
-		lblRetour_signin = new JLabel("Retour");
-		lblRetour_signin.addMouseListener(new MouseAdapter() {
+		lblRetour_inscription = new JLabel("Retour");
+		lblRetour_inscription.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				state = loginScreen;
+				etat = accueil;
 				try {
-					display();
+					affichage();
 				} catch (NumberFormatException | SQLException | ParseException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors du retour à l'écran de connexion.");
 					frame.dispose();
@@ -491,37 +493,37 @@ public class GUI {
 				}
 			}
 		});
-		lblRetour_signin.setForeground(Color.BLUE);
-		lblRetour_signin.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblRetour_signin, 0, SpringLayout.HORIZONTAL_CENTER,
+		lblRetour_inscription.setForeground(Color.BLUE);
+		lblRetour_inscription.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblRetour_inscription, 0, SpringLayout.HORIZONTAL_CENTER,
 				frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, lblRetour_signin, -10, SpringLayout.SOUTH,
+		springLayout.putConstraint(SpringLayout.SOUTH, lblRetour_inscription, -10, SpringLayout.SOUTH,
 				frame.getContentPane());
-		frame.getContentPane().add(lblRetour_signin);
+		frame.getContentPane().add(lblRetour_inscription);
 
-		signinList.add(tfUsername_signin);
-		signinList.add(tfPassword_signin);
-		signinList.add(tfPasswordBis_signin);
-		signinList.add(tfAddress_signin);
-		signinList.add(tfFirstName_signin);
-		signinList.add(tfLastName_signin);
-		signinList.add(tfDateDay_signin);
-		signinList.add(tfDateMonth_signin);
-		signinList.add(tfDateYear_signin);
-		signinList.add(lblTitre_signin);
-		signinList.add(lblMail_signin);
-		signinList.add(lblMotDePasse_signin);
-		signinList.add(lblMotDePasseBis_signin);
-		signinList.add(lblRetour_signin);
-		signinList.add(lblAddress_signin);
-		signinList.add(lblFirstName_signin);
-		signinList.add(lblLastName_signin);
-		signinList.add(lblDate_signin);
-		signinList.add(btnCreate_signin);
+		signinList.add(tfMail_inscription);
+		signinList.add(tfMotDePasse_inscription);
+		signinList.add(tfMotDePasseBis_inscription);
+		signinList.add(tfAdresse_inscription);
+		signinList.add(tfPrenom_inscription);
+		signinList.add(tfNom_inscription);
+		signinList.add(tfDateJour_inscription);
+		signinList.add(tfDateMois_inscription);
+		signinList.add(tfDateAnnee_inscription);
+		signinList.add(lblTitre_inscription);
+		signinList.add(lblMail_inscription);
+		signinList.add(lblMotDePasse_inscription);
+		signinList.add(lblMotDePasseBis_inscription);
+		signinList.add(lblRetour_inscription);
+		signinList.add(lblAdresse_inscription);
+		signinList.add(lblPrenom_inscription);
+		signinList.add(lblNom_inscription);
+		signinList.add(lblDate_inscription);
+		signinList.add(btnCreer_inscription);
 
 	}
 
-	public void initConnected(JFrame frame, SpringLayout springLayout) throws SQLException {
+	public void initConnecte(JFrame frame, SpringLayout springLayout) throws SQLException {
 		tfRecherche_connect = new JTextField();
 		springLayout.putConstraint(SpringLayout.HORIZONTAL_CENTER, tfRecherche_connect, -13,
 				SpringLayout.HORIZONTAL_CENTER, frame.getContentPane());
@@ -536,13 +538,13 @@ public class GUI {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
 						if (rdbtnAuteur_connect.isSelected())
-							search(AUTEUR);
+							rechercher(AUTEUR);
 						else if (rdbtnGenre_connect.isSelected())
-							search(GENRE);
+							rechercher(GENRE);
 						else if (rdbtnNom_connect.isSelected())
-							search(NOM);
+							rechercher(NOM);
 						else
-							search(NOM);
+							rechercher(NOM);
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(frame, "Erreur critique lors de la recherche.");
 						e1.printStackTrace();
@@ -571,13 +573,13 @@ public class GUI {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					if (rdbtnAuteur_connect.isSelected())
-						search(AUTEUR);
+						rechercher(AUTEUR);
 					else if (rdbtnGenre_connect.isSelected())
-						search(GENRE);
+						rechercher(GENRE);
 					else if (rdbtnNom_connect.isSelected())
-						search(NOM);
+						rechercher(NOM);
 					else
-						search(NOM);
+						rechercher(NOM);
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la recherche.");
 					e1.printStackTrace();
@@ -589,7 +591,7 @@ public class GUI {
 			public void keyPressed(KeyEvent arg0) {
 				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
-						connect();
+						connecter();
 					} catch (NumberFormatException | ParseException | SQLException e) {
 						JOptionPane.showMessageDialog(frame, "Erreur critique lors de la connexion.");
 						frame.dispose();
@@ -626,9 +628,15 @@ public class GUI {
 		btnReserver_connect.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if (produitCourant == null) {
+					JOptionPane.showMessageDialog(frame, "Aucun produit sélectionné.");
+					return;
+				}
 				try {
-					currentUser.reserver(selectedProduct.idProduit);
-					JOptionPane.showMessageDialog(frame, "Réservation réussie.");
+					int r = utilisateurCourant.reserver(produitCourant.idProduit);
+					if(r == -1)JOptionPane.showMessageDialog(frame, "Le produit est déjà disponible, vous pouvez l'emprunter.");
+					else JOptionPane.showMessageDialog(frame, "Réservation réussie.");
+					produitCourant = null;
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la réservation.");
 					e1.printStackTrace();
@@ -648,25 +656,26 @@ public class GUI {
 		btnEmprunter_connect.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (selectedProduct == null) {
+				if (produitCourant == null) {
 					JOptionPane.showMessageDialog(frame, "Aucun produit sélectionné.");
 					return;
 				}
 				try {
-					int r = currentUser.emprunter(selectedProduct.idProduit);
+					int r = utilisateurCourant.emprunter(produitCourant.idProduit);
 					if (r == -1) {
 						JOptionPane.showMessageDialog(frame,
 								"Le produit n'est pas disponible, vous pouvez le réserver en cliquant sur le bouton Réserver.");
 					} else {
 						JOptionPane.showMessageDialog(frame, "Emprunt réussi.");
 						if (rdbtnAuteur_connect.isSelected())
-							search(AUTEUR);
+							rechercher(AUTEUR);
 						else if (rdbtnGenre_connect.isSelected())
-							search(GENRE);
+							rechercher(GENRE);
 						else if (rdbtnNom_connect.isSelected())
-							search(NOM);
+							rechercher(NOM);
 						else
-							search(NOM);
+							rechercher(NOM);
+						produitCourant = null;
 					}
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de l'emprunt.");
@@ -754,19 +763,19 @@ public class GUI {
 				frame.getContentPane());
 		btnMonCompte_connect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				state = profile;
+				etat = profil;
 				try {
 					emprunts();
-					txtNom_prof.setText(currentUser.getNom());
-					txtPrnom_prof.setText(currentUser.getPrenom());
-					tfAdr_prof.setText(currentUser.getAdresse());
-					tfMail_prof.setText(currentUser.getMail());
+					txtNom_prof.setText(utilisateurCourant.getNom());
+					txtPrnom_prof.setText(utilisateurCourant.getPrenom());
+					tfAdr_prof.setText(utilisateurCourant.getAdresse());
+					tfMail_prof.setText(utilisateurCourant.getMail());
 				} catch (ParseException | SQLException e) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de l'affichage du profil.");
 					e.printStackTrace();
 				}
 				try {
-					display();
+					affichage();
 				} catch (NumberFormatException | SQLException | ParseException e) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de l'accès au profil.");
 					frame.dispose();
@@ -787,9 +796,9 @@ public class GUI {
 		btnSeDconnecter_connect.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnSeDconnecter_connect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				state = loginScreen;
+				etat = accueil;
 				try {
-					display();
+					affichage();
 				} catch (NumberFormatException | SQLException | ParseException e) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la déconnexion.");
 					frame.dispose();
@@ -801,28 +810,28 @@ public class GUI {
 				frame.getContentPane());
 		frame.getContentPane().add(btnSeDconnecter_connect);
 
-		connectedList.add(tfRecherche_connect);
-		connectedList.add(lblBienvenue_connect);
-		connectedList.add(btnRechercher_connect);
-		connectedList.add(listPanel_connect);
-		connectedList.add(scrollPane_connect);
-		connectedList.add(btnReserver_connect);
-		connectedList.add(btnEmprunter_connect);
-		connectedList.add(rdbtnNom_connect);
-		connectedList.add(rdbtnGenre_connect);
-		connectedList.add(rdbtnAuteur_connect);
-		connectedList.add(lblRechercheParCritres_connect);
-		connectedList.add(chckbxDispo_connect);
-		connectedList.add(btnMonCompte_connect);
-		connectedList.add(btnSeDconnecter_connect);
-		connectedList.add(chckbxFilm_connect);
-		connectedList.add(chckbxLivre_connect);
-		connectedList.add(chckbxMusique_connect);
-		connectedList.add(separator_connect);
+		listConnect.add(tfRecherche_connect);
+		listConnect.add(lblBienvenue_connect);
+		listConnect.add(btnRechercher_connect);
+		listConnect.add(listPanel_connect);
+		listConnect.add(scrollPane_connect);
+		listConnect.add(btnReserver_connect);
+		listConnect.add(btnEmprunter_connect);
+		listConnect.add(rdbtnNom_connect);
+		listConnect.add(rdbtnGenre_connect);
+		listConnect.add(rdbtnAuteur_connect);
+		listConnect.add(lblRechercheParCritres_connect);
+		listConnect.add(chckbxDispo_connect);
+		listConnect.add(btnMonCompte_connect);
+		listConnect.add(btnSeDconnecter_connect);
+		listConnect.add(chckbxFilm_connect);
+		listConnect.add(chckbxLivre_connect);
+		listConnect.add(chckbxMusique_connect);
+		listConnect.add(separator_connect);
 
 	}
 
-	public void initProfile(JFrame frame, SpringLayout springLayout) throws SQLException, ParseException {
+	public void initProfil(JFrame frame, SpringLayout springLayout) throws SQLException, ParseException {
 		lblEmprunts_prof = new JLabel("Mes emprunts");
 		springLayout.putConstraint(SpringLayout.WEST, lblEmprunts_prof, 850, SpringLayout.WEST, frame.getContentPane());
 		lblEmprunts_prof.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -852,9 +861,9 @@ public class GUI {
 		btnRetour_prof.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				state = connected;
+				etat = connecte;
 				try {
-					display();
+					affichage();
 				} catch (NumberFormatException | SQLException | ParseException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors du retour à l'écran de connexion.");
 					frame.dispose();
@@ -993,15 +1002,15 @@ public class GUI {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						try {
-							int r = currentUser.desactiver();
+							int r = utilisateurCourant.desactiver();
 							if (r == -1) {
 								JOptionPane.showMessageDialog(frame, "Vous avez des emprunts en cours.");
 								frameCheck.dispose();
 								return;
 							}
-							state = loginScreen;
+							etat = accueil;
 							frameCheck.dispose();
-							display();
+							affichage();
 						} catch (SQLException | ParseException e1) {
 							JOptionPane.showMessageDialog(frame, "Erreur critique lors de la désactivation du compte.");
 							frame.dispose();
@@ -1066,7 +1075,7 @@ public class GUI {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					currentUser.setAdresse(tfAdr_prof.getText());
+					utilisateurCourant.setAdresse(tfAdr_prof.getText());
 					JOptionPane.showMessageDialog(frame, "Adresse modifiée avec succès.");
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la modification de l'adresse.");
@@ -1089,7 +1098,7 @@ public class GUI {
 				if (!m.find()) {
 					JOptionPane.showMessageDialog(frame, "Adresse mail au format incorrect.");
 					try {
-						tfMail_prof.setText(currentUser.getMail());
+						tfMail_prof.setText(utilisateurCourant.getMail());
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(frame,
 								"Erreur critique lors de la modification de l'adresse mail.");
@@ -1097,7 +1106,7 @@ public class GUI {
 					}
 				} else {
 					try {
-						currentUser.setMail(tfMail_prof.getText());
+						utilisateurCourant.setMail(tfMail_prof.getText());
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(frame,
 								"Erreur critique lors de la modification de l'adresse mail.");
@@ -1123,7 +1132,7 @@ public class GUI {
 					tfMdpBis_prof.setText("");
 				} else {
 					try {
-						currentUser.setPassword(tfMdp_prof.getText());
+						utilisateurCourant.setMotDePasse(tfMdp_prof.getText());
 						JOptionPane.showMessageDialog(frame, "Mot de passe modifié avec succès.");
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(frame,
@@ -1141,9 +1150,9 @@ public class GUI {
 		btnSeDconnecter_prof.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				state = loginScreen;
+				etat = accueil;
 				try {
-					display();
+					affichage();
 				} catch (NumberFormatException | SQLException | ParseException e1) {
 					JOptionPane.showMessageDialog(frame, "Erreur critique lors de la désactivation du compte.");
 					frame.dispose();
@@ -1153,38 +1162,39 @@ public class GUI {
 		});
 		frame.getContentPane().add(btnSeDconnecter_prof);
 
-		profileList.add(lblEmprunts_prof);
-		profileList.add(scrollPane_prof);
-		profileList.add(listPanel_prof);
-		profileList.add(txtNom_prof);
-		profileList.add(txtPrnom_prof);
-		profileList.add(tfAdr_prof);
-		profileList.add(tfMdp_prof);
-		profileList.add(tfMdpBis_prof);
-		profileList.add(lblEmail_prof);
-		profileList.add(tfMail_prof);
-		profileList.add(btnDesactiver_prof);
-		profileList.add(btnRetour_prof);
-		profileList.add(lblMesInformations_prof);
-		profileList.add(lblAdresse_prof);
-		profileList.add(lblMotDePasse_prof);
-		profileList.add(lblConfirmation);
-		profileList.add(btnProlonger_prof);
-		profileList.add(btnRendre_prof);
-		profileList.add(btnChkAdr_prof);
-		profileList.add(btnChkMail_prof);
-		profileList.add(btnChkMdp_prof);
-		profileList.add(btnSeDconnecter_prof);
-		profileList.add(lblNom_prof);
-		profileList.add(lblPrnom_prof);
+		listProfil.add(lblEmprunts_prof);
+		listProfil.add(scrollPane_prof);
+		listProfil.add(listPanel_prof);
+		listProfil.add(txtNom_prof);
+		listProfil.add(txtPrnom_prof);
+		listProfil.add(tfAdr_prof);
+		listProfil.add(tfMdp_prof);
+		listProfil.add(tfMdpBis_prof);
+		listProfil.add(lblEmail_prof);
+		listProfil.add(tfMail_prof);
+		listProfil.add(btnDesactiver_prof);
+		listProfil.add(btnRetour_prof);
+		listProfil.add(lblMesInformations_prof);
+		listProfil.add(lblAdresse_prof);
+		listProfil.add(lblMotDePasse_prof);
+		listProfil.add(lblConfirmation);
+		listProfil.add(btnProlonger_prof);
+		listProfil.add(btnRendre_prof);
+		listProfil.add(btnChkAdr_prof);
+		listProfil.add(btnChkMail_prof);
+		listProfil.add(btnChkMdp_prof);
+		listProfil.add(btnSeDconnecter_prof);
+		listProfil.add(lblNom_prof);
+		listProfil.add(lblPrnom_prof);
 
 	}
 
-	public void display() throws NumberFormatException, SQLException, ParseException {
+	public void affichage() throws NumberFormatException, SQLException, ParseException {
 		Connect.update();
+		produitCourant = null;
 		/**** LOGIN ****/
-		boolean log = (state == loginScreen);
-		for (Object item : loginList) {
+		boolean log = (etat == accueil);
+		for (Object item : listAccueil) {
 			((JComponent) item).setVisible(log);
 			if (item.getClass().getSimpleName().equals("JTextField"))
 				((JTextComponent) item).setText("");
@@ -1193,7 +1203,7 @@ public class GUI {
 		}
 
 		/**** SIGN IN ***/
-		boolean sign = (state == signIn);
+		boolean sign = (etat == inscription);
 		for (Object item : signinList) {
 			((JComponent) item).setVisible(sign);
 			if (item.getClass().getSimpleName().equals("JTextField"))
@@ -1203,8 +1213,8 @@ public class GUI {
 		}
 
 		/**** CONNECTED ****/
-		boolean conn = (state == connected);
-		for (Object item : connectedList) {
+		boolean conn = (etat == connecte);
+		for (Object item : listConnect) {
 			((JComponent) item).setVisible(conn);
 			if (item.getClass().getSimpleName().equals("JTextField"))
 				((JTextComponent) item).setText("");
@@ -1213,46 +1223,46 @@ public class GUI {
 		}
 
 		/**** PROFILE ****/
-		boolean prof = (state == profile);
-		for (Object item : profileList) {
+		boolean prof = (etat == profil);
+		for (Object item : listProfil) {
 			((JComponent) item).setVisible(prof);
 		}
 	}
 
-	public void createUser() throws NumberFormatException, ParseException {
+	public void creerUtilisateur() throws NumberFormatException, ParseException {
 		Pattern r = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-		Matcher m = r.matcher(tfUsername_signin.getText());
+		Matcher m = r.matcher(tfMail_inscription.getText());
 		if (!m.find()) {
 			JOptionPane.showMessageDialog(frame, "Adresse mail au format incorrect.");
-			tfPassword_signin.setText("");
-			tfPasswordBis_signin.setText("");
+			tfMotDePasse_inscription.setText("");
+			tfMotDePasseBis_inscription.setText("");
 		} else {
-			if (!tfPassword_signin.getText().equals(tfPasswordBis_signin.getText())) {
+			if (!tfMotDePasse_inscription.getText().equals(tfMotDePasseBis_inscription.getText())) {
 				JOptionPane.showMessageDialog(frame, "Les mots de passe sont différents.");
-				tfPassword_signin.setText("");
-				tfPasswordBis_signin.setText("");
+				tfMotDePasse_inscription.setText("");
+				tfMotDePasseBis_inscription.setText("");
 			}
-			String query = "SELECT eMail FROM adherent WHERE eMail = '" + tfUsername_signin.getText() + "';";
+			String query = "SELECT eMail FROM adherent WHERE eMail = '" + tfMail_inscription.getText() + "';";
 			try {
 				Connect.result = Connect.state.executeQuery(query);
 				if (Connect.result.next()) {
 					JOptionPane.showMessageDialog(frame, "Adresse déjà utilisée.");
-					tfUsername_signin.setText("");
-					tfPassword_signin.setText("");
-					tfPasswordBis_signin.setText("");
+					tfMail_inscription.setText("");
+					tfMotDePasse_inscription.setText("");
+					tfMotDePasseBis_inscription.setText("");
 				} else {
 					query = "INSERT INTO adherent (eMail, Nom, Prenom, Adresse, DateNaissance, MotDePasse, Actif, nbRetard) VALUES ('"
-							+ tfUsername_signin.getText() + "', '" + tfLastName_signin.getText() + "', '"
-							+ tfFirstName_signin.getText() + "', '" + tfAddress_signin.getText() + "', '"
-							+ tfDateYear_signin.getSelectedItem().toString() + "-"
-							+ tfDateMonth_signin.getSelectedItem().toString() + "-"
-							+ tfDateDay_signin.getSelectedItem().toString() + "', '" + tfPassword_signin.getText()
+							+ tfMail_inscription.getText() + "', '" + tfNom_inscription.getText() + "', '"
+							+ tfPrenom_inscription.getText() + "', '" + tfAdresse_inscription.getText() + "', '"
+							+ tfDateAnnee_inscription.getSelectedItem().toString() + "-"
+							+ tfDateMois_inscription.getSelectedItem().toString() + "-"
+							+ tfDateJour_inscription.getSelectedItem().toString() + "', '" + tfMotDePasse_inscription.getText()
 							+ "', '1', '0');";
 					Connect.state.executeUpdate(query);
 					JOptionPane.showMessageDialog(frame, "Inscription réussie.");
 					Adherent.init();
-					state = loginScreen;
-					display();
+					etat = accueil;
+					affichage();
 				}
 			} catch (SQLException e) {
 				JOptionPane.showMessageDialog(frame, "Erreur critique lors de l'inscription.");
@@ -1262,26 +1272,26 @@ public class GUI {
 		}
 	}
 
-	public void connect() throws NumberFormatException, ParseException, SQLException {
-		String query = "SELECT idAdherent FROM adherent WHERE eMail = '" + tfUsername_login.getText()
-				+ "' AND MotDePasse = '" + tfPassword_login.getText() + "';";
+	public void connecter() throws NumberFormatException, ParseException, SQLException {
+		String query = "SELECT idAdherent FROM adherent WHERE eMail = '" + tfMail_accueil.getText()
+				+ "' AND MotDePasse = '" + tfMotDePasse_accueil.getText() + "';";
 		try {
 			Connect.result = Connect.state.executeQuery(query);
 			if (!Connect.result.next()) {
 				JOptionPane.showMessageDialog(frame, "Erreur d'identification.");
-				tfUsername_login.setText("");
+				tfMail_accueil.setText("");
 			} else {
 				JOptionPane.showMessageDialog(frame, "Identification réussie.");
-				state = connected;
-				currentUser = Adherent.getAdherent(Integer.valueOf(Connect.result.getObject(1).toString()));
-				if (!currentUser.actif) {
-					String update = "UPDATE adherent SET actif = 1 WHERE idAdherent = " + currentUser.idAdherent + ";";
+				etat = connecte;
+				utilisateurCourant = Adherent.getAdherent(Integer.valueOf(Connect.result.getObject(1).toString()));
+				if (!utilisateurCourant.actif) {
+					String update = "UPDATE adherent SET actif = 1 WHERE idAdherent = " + utilisateurCourant.idAdherent + ";";
 					Connect.state.executeUpdate(update);
-					currentUser.actif = true;
+					utilisateurCourant.actif = true;
 					JOptionPane.showMessageDialog(frame, "Votre compte a été réactivé !");
 				}
-				lblBienvenue_connect.setText("Bienvenue " + currentUser.getPrenom() + " !");
-				List<Emprunt> emprunts = currentUser.emprunts();
+				lblBienvenue_connect.setText("Bienvenue " + utilisateurCourant.getPrenom() + " !");
+				List<Emprunt> emprunts = utilisateurCourant.emprunts();
 				int flag = 0;
 				for (Emprunt e : emprunts) {
 					if (e.retard())
@@ -1292,12 +1302,19 @@ public class GUI {
 				switch (flag) {
 				case 2:
 					JOptionPane.showMessageDialog(frame, "Attention ! Vous avez au moins 1 produit à rendre !");
+					break;
 				case 1:
 					JOptionPane.showMessageDialog(frame,
 							"Attention ! Vous avez au moins 1 produit à rendre aujourd'hui !");
+					break;
 				default:
 				}
-				display();
+				String mes = utilisateurCourant.hasReservation();
+				if (!mes.equals("null")) {
+					System.out.println(mes);
+					JOptionPane.showMessageDialog(frame, mes);					
+				}
+				affichage();
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(frame, "Erreur critique lors de la connection de l'utilisateur.");
@@ -1306,7 +1323,7 @@ public class GUI {
 		}
 	}
 
-	public void search(int param) throws SQLException {
+	public void rechercher(int param) throws SQLException {
 		listPanel_connect.removeAll();
 		List<Integer> recherche;
 		switch (param) {
@@ -1358,7 +1375,7 @@ public class GUI {
 			b.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					selectedProduct = produit;
+					produitCourant = produit;
 					for (JButton bouton : boutons) {
 						bouton.setBackground(Color.lightGray);
 					}
@@ -1381,7 +1398,7 @@ public class GUI {
 	public void emprunts() throws SQLException, ParseException {
 		listPanel_prof.removeAll();
 		List<JButton> boutons = new ArrayList<>();
-		List<Emprunt> emprunts = currentUser.emprunts();
+		List<Emprunt> emprunts = utilisateurCourant.emprunts();
 		for (Emprunt e : emprunts) {
 			JButton b = new JButton(e.toString());
 			b.setBorder(new LineBorder(Color.GRAY, 2));
@@ -1392,7 +1409,7 @@ public class GUI {
 					for (JButton b : boutons) {
 						b.setBorder(new LineBorder(Color.GRAY, 2));
 					}
-					selectedEmprunt = e;
+					empruntCourant = e;
 					b.setBorder(new LineBorder(Color.WHITE, 3));
 				}
 			});
@@ -1417,15 +1434,29 @@ public class GUI {
 	}
 
 	public void rendre() throws SQLException, ParseException {
-		currentUser.rendre(selectedEmprunt);
+		if(empruntCourant == null) {
+			JOptionPane.showMessageDialog(frame, "Aucun emprunt sélectionné.");
+			return;
+		}
+		int r = utilisateurCourant.rendre(empruntCourant);
+		if (r == 1)
+			JOptionPane.showMessageDialog(frame, "Le produit a déjà été rendu.");
 		emprunts();
+		produitCourant = null;
 	}
 
 	public void prolonger() throws SQLException, ParseException {
-		int r = currentUser.prolonger(selectedEmprunt);
+		if(empruntCourant == null) {
+			JOptionPane.showMessageDialog(frame, "Aucun emprunt sélectionné.");
+			return;
+		}
+		int r = utilisateurCourant.prolonger(empruntCourant);
 		if (r == -1)
 			JOptionPane.showMessageDialog(frame, "Vous avez trop de retards pour pouvoir prolonger.");
+		if (r == 1)
+			JOptionPane.showMessageDialog(frame, "Le produit a déjà été rendu.");
 		emprunts();
+		produitCourant = null;
 	}
 
 	/**
@@ -1457,12 +1488,12 @@ public class GUI {
 		springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 
-		initLogin(frame, springLayout);
-		initSingIn(frame, springLayout);
-		initConnected(frame, springLayout);
-		initProfile(frame, springLayout);
+		initAccueil(frame, springLayout);
+		initInscription(frame, springLayout);
+		initConnecte(frame, springLayout);
+		initProfil(frame, springLayout);
 
-		display();
+		affichage();
 
 	}
 }
